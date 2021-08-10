@@ -40,14 +40,9 @@ jobs:
           cd github-action
           npm install
 
-      # 三、打包
-      - name: Build
+      # 三、打包&导出
+      - name: Build & Export
         run: |
           cd github-action
           npm run build
-
-      # 四、导出
-      - name: Export
-        run: |
-          cd github-action
           npx next export
