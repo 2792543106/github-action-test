@@ -1,0 +1,49 @@
+# This is a basic workflow to help you get started with Actions
+
+name: github action test
+
+# 触发规则
+on:
+  # 当main分支发生push事件时，触发
+  push:
+    branches:
+      - main
+    paths:
+      - 'github-action/**'
+      - '!github-action/README.md'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  build:
+    # 使用Ubuntu系统
+    runs-on: ubuntu-latest
+    
+    # 配置所需node版本
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    # 任务
+    steps:
+      # 一、检出仓库副本
+      - uses: actions/checkout@v2
+      
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # 二、安装依赖
+      - name: Install Dependencies
+        run: |
+          cd git-action
+          npm install
+
+      # 三、打包
+      - name: Build
+        run: npm run build
+        
+      # 四、导出
+      - name: Export
+        run: npx next export
