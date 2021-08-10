@@ -12,6 +12,13 @@ on:
       - 'github-action/**'
       - '!github-action/README.md'
       - '!.gitignore'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'github-action/**'
+      - '!github-action/README.md'
+      - '!.gitignore'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
