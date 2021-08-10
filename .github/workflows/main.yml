@@ -42,8 +42,12 @@ jobs:
 
       # 三、打包
       - name: Build
-        run: npm run build
+        run: |
+          cd github-action
+          npm run build
 
       # 四、导出
       - name: Export
-        run: npx next export
+        run: |
+          cd github-action
+          npx next export
