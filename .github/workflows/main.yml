@@ -4,17 +4,10 @@ name: github action test
 
 # 触发规则
 on:
-  # 当main分支发生push事件时，触发
-  # push:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - 'github-action/**'
-  #     - '!github-action/README.md'
-  #     - '!.gitignore'
+  # 当main分支发生 pull_request 事件时，触发
   pull_request:
     branches:
-      - main
+      - master
     paths:
       - 'github-action/**'
       - '!github-action/README.md'
